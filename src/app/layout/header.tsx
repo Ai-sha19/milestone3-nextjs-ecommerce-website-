@@ -46,16 +46,16 @@ const Header = () => {
                 <Link href="/" className="hover:text-[#5a526c]">
                   Home
                 </Link>
-                <Link href="/" className="hover:text-[#5a526c]">
+                <Link href="/about" className="hover:text-[#5a526c]">
                   About
                 </Link>
-                <Link href="../products" className="hover:text-[#5a526c]">
+                <Link href="/products" className="hover:text-[#5a526c]">
                   Products
                 </Link>
-                <Link href="/" className="hover:text-[#5a526c]">
+                <Link href="/cart" className="hover:text-[#5a526c]">
                   Shopping Cart
                 </Link>
-                <Link href="/" className="hover:text-[#5a526c]">
+                <Link href="/sign-up" className="hover:text-[#5a526c]">
                   Sign Up
                 </Link>
               </nav>
