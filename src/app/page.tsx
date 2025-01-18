@@ -1,8 +1,6 @@
 import Image from "next/image";
 import { sanityfetch } from "@/sanity/lib/fetch"
-import { sanityFetch } from "@/sanity/lib/live";
 import { allproducts } from "@/sanity/lib/queries";
-import { product } from "@/sanity/schemaTypes/product";
 
 type Product={
   _id:string;
