@@ -41,6 +41,8 @@ export default async function AllProductsPage() {
               <Image
                 src={product.imageUrl}
                 alt={product.name}
+                width={300}
+                height={300}
                 className="w-full h-48 object-cover rounded"
               />
               {/* Product Name */}

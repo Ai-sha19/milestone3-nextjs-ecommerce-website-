@@ -14,4 +14,24 @@ export const sanityfetch = async ({
         console.error('Error fetching data from Sanity:', error);
         throw new Error('Failed to fetch data');
     }
+
 };
+
+
+
+
+
+
+// import { createClient } from "next-sanity";
+
+// const client = createClient({
+//     projectId:"qqrrdyfv",
+//     dataset:"production",
+//     useCdn:true,
+//     apiVersion:"2023-10-10"
+// })
+
+// export async function sanityfetch({query, params = {}}:{query:string, params?:any} )
+// {
+//     return await client.fetch (query,params)
+// }
