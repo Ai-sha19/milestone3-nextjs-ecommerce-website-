@@ -1,6 +1,7 @@
 // src/app/all-products/page.tsx
 import Link from 'next/link';
 import { sanityfetch } from '@/sanity/lib/fetch'; // Fetch function for Sanity
+import Image from 'next/image';
 
 interface Product {
   _id: string;
@@ -37,7 +38,7 @@ export default async function AllProductsPage() {
           >
             <Link href={`/all-products/${product.slug.current}`}>
               {/* Product Image */}
-              <img
+              <Image
                 src={product.imageUrl}
                 alt={product.name}
                 className="w-full h-48 object-cover rounded"

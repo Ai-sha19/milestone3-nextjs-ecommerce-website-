@@ -6,7 +6,7 @@ export const sanityfetch = async ({
     params = {},
 }: {
     query: string;
-    params?: Record<string, any>;
+    params?: Record<string, unknown>;  // Using Record<string, unknown> instead of any
 }) => {
     try {
         return await client.fetch(query, params);
