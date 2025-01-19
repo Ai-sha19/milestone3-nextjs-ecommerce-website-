@@ -68,7 +68,7 @@ const ProductDetail = ({ params }: ProductDetailProps) => {
           align-items: center;
           margin: 20px;
           padding: 20px;
-          gap: 20px;
+          gap: 10px;
           flex-wrap: wrap;
         }
         .product-image img {
