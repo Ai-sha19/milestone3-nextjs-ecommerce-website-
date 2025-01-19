@@ -1,12 +1,35 @@
-const Wishlist = ({ wishlistItems }: { wishlistItems: any[] }) => {
+import React from "react";
+
+// src/app/components/Wishlist.tsx
+interface WishlistItem {
+    id: string;
+    name: string;
+    price: number;
+  }
+  
+  const Wishlist = () => {
+    const [wishlistItems, setWishlistItems] = React.useState<WishlistItem[]>([]);
+  
+    React.useEffect(() => {
+      const savedItems = localStorage.getItem('wishlist');
+      if (savedItems) {
+        setWishlistItems(JSON.parse(savedItems));
+      }
+    }, []);
+  
     return (
-      <div className="p-4">
-        <h2 className="text-2xl font-bold mb-4">Wishlist</h2>
-        {wishlistItems.map((item) => (
-          <div key={item.id} className="mb-2">
-            <p>{item.name}</p>
-          </div>
-        ))}
+      <div>
+        <h2>Wishlist</h2>
+        {wishlistItems.length > 0 ? (
+          wishlistItems.map((item) => (
+            <div key={item.id}>
+              <h3>{item.name}</h3>
+              <p>Price: ${item.price}</p>
+            </div>
+          ))
+        ) : (
+          <p>Your wishlist is empty</p>
+        )}
       </div>
     );
   };

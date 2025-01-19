@@ -1,18 +1,26 @@
-import { useRouter } from 'next/router';
-import { fetchProductBySlug } from '@/sanity/lib/fetch';
-import React from 'react';
+import React from "react";
+
+// src/app/components/ProductDetail.tsx
+interface Product {
+  _id: string;
+  name: string;
+  description: string;
+  price: number;
+  imageUrl: string;
+  sizes: string[];
+}
 
 const ProductDetail = () => {
-  const router = useRouter();
-  const { slug } = router.query;
-
-  const [product, setProduct] = React.useState<any>(null);
+  const [product, setProduct] = React.useState<Product | null>(null);
 
   React.useEffect(() => {
-    if (slug) {
-      fetchProductBySlug(slug as string).then((data: any) => setProduct(data));
-    }
-  }, [slug]);
+    const fetchProduct = async () => {
+      const res = await fetch(`/api/product/${product?._id}`);
+      const data: Product = await res.json();
+      setProduct(data);
+    };
+    fetchProduct();
+  }, []);
 
   if (!product) return <p>Loading...</p>;
 
@@ -20,9 +28,7 @@ const ProductDetail = () => {
     <div className="p-6">
       <h1 className="text-2xl font-bold">{product.name}</h1>
       <p className="text-gray-600 mt-2">{product.description}</p>
-      <p className="text-xl text-green-600 font-semibold mt-4">
-        ${product.price}
-      </p>
+      <p className="text-xl text-green-600 font-semibold mt-4">${product.price}</p>
       <p className="mt-2">
         <span className="font-bold">Available Sizes: </span>
         {product.sizes.join(', ')}

@@ -1,29 +1,32 @@
-import Image from 'next/image';
+import React from "react";
 
-const ProductListing = ({ products }: { products: any[] }) => {
+// src/app/components/ProductListing.tsx
+interface Product {
+  _id: string;
+  name: string;
+  price: number;
+  imageUrl: string;
+}
+
+const ProductListing = () => {
+  const [products, setProducts] = React.useState<Product[]>([]);
+
+  React.useEffect(() => {
+    const fetchProducts = async () => {
+      const res = await fetch('/api/products');
+      const data: Product[] = await res.json();
+      setProducts(data);
+    };
+    fetchProducts();
+  }, []);
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       {products.map((product) => (
-        <div
-          key={product.id}
-          className="border rounded-lg p-4 shadow-sm hover:shadow-md"
-        >
-          <Image
-            src={product.image}
-            alt={product.name}
-            width={200}
-            height={200}
-            className="w-full h-48 object-cover mb-4"
-          />
-          <h2 className="font-bold text-lg">{product.name}</h2>
-          <p className="text-gray-600">${product.price}</p>
-          <p
-            className={`text-sm ${
-              product.inStock ? 'text-green-600' : 'text-red-600'
-            }`}
-          >
-            {product.inStock ? 'In Stock' : 'Out of Stock'}
-          </p>
+        <div key={product._id} className="border p-4 rounded-lg shadow hover:shadow-lg transition">
+          <h2 className="text-xl font-semibold mt-4">{product.name}</h2>
+          <img src={product.imageUrl} alt={product.name} className="w-full h-48 object-cover rounded" />
+          <p className="text-gray-700 mt-2">Price: ${product.price}</p>
         </div>
       ))}
     </div>
