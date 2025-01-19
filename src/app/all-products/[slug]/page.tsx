@@ -75,6 +75,8 @@ export default async function ProductDetailsPage({ params }: ProductDetailsProps
           <h3 className="text-xl font-bold mb-2">Tags:</h3>
           <p className="text-gray-500">{product.tags?.join(', ')}</p>
         </div>
+
+        
       </div>
     </div>
   );
