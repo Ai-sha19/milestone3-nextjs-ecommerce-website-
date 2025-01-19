@@ -1,20 +1,17 @@
-import { createClient } from "next-sanity";
+// src/sanity/lib/fetch.ts
+import { client } from './client';  // Corrected import path
 
-// Initialize the Sanity client
-const client = createClient({
-    projectId: "9b2rdswq", // Replace with your actual Project ID
-    dataset: "production", // Replace with your dataset
-    useCdn: true, // Enable/disable CDN based on your preference
-    apiVersion: "2023-10-10", // Replace with your API version
-});
-
-// Define a stricter type for the params object
-export async function sanityfetch({
+export const sanityfetch = async ({
     query,
     params = {},
 }: {
     query: string;
-    params?: Record<string, unknown>; // Use Record<string, unknown> instead of any
-}) {
-    return await client.fetch(query, params);
-}
+    params?: Record<string, any>;
+}) => {
+    try {
+        return await client.fetch(query, params);
+    } catch (error) {
+        console.error('Error fetching data from Sanity:', error);
+        throw new Error('Failed to fetch data');
+    }
+};
