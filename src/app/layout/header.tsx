@@ -26,7 +26,9 @@ const Header = () => {
             <Link href="/cart">
               <MdOutlineShoppingCart />
             </Link>
-            <CgProfile />
+           <Link href="/sign-up">
+           <CgProfile />
+           </Link>
           </div>
 
           {/* Mobile Menu Trigger */}

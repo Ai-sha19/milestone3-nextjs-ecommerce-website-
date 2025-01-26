@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+// import { CartProvider } from '@/context/CartContext';
+import { CartProvider } from "@/context/CartContext";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./layout/header";
@@ -31,7 +33,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-        {children}
+        {/* {children} */}
+        <CartProvider>{children}</CartProvider>
         <Footer />
       </body>
     </html>
