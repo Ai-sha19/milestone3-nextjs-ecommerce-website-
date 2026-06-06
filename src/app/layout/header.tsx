@@ -26,7 +26,7 @@ const Header = () => {
             <Link href="/cart">
               <MdOutlineShoppingCart />
             </Link>
-           <Link href="/sign-up">
+           <Link href="/login">
            <CgProfile />
            </Link>
           </div>
